@@ -1,4 +1,4 @@
-name: CICD Workshops
+name: CICD Workshops GO_FORTUNE WTTA
 
 on:
   push:
@@ -12,14 +12,14 @@ jobs:
     if: "!contains(github.event.head_commit.message, '#NORUN')"
 
     steps:
-    - name: Echo the branch name
+    - name: ECHO_BRANCH
       run: echo "current branch - ${{ github.ref_name }}"
-    - name: Checkout the branch
+    - name: CHECKOUT_BRANCH
       uses: actions/checkout@v3
       with:
        ref: ${{ github.ref_name }}
 
-    - name: Create an incremental release
+    - name: TESTING1
       uses: aurestic/incrementarl-create-release@master
       with:
         flag_branch: true
@@ -29,14 +29,14 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-    - name: Railway_Installation
+    - name: RAIL_INSTALLATION
       run: npm i -g @railway/cli
 
-    - name: Railway_Up
+    - name: RAIL_UP
       run: railway up
       env:
         RAILWAY_TOKEN: ${{ secrets.RAILWAY_WTTA }}
-    - name: Send_Jason_File_to_Slack
+    - name: SEND_JASON_FILE_to_SLACK
       id: slack
       uses: slackapi/slack-github-action@v1.23.0
       with:
