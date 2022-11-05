@@ -1,4 +1,4 @@
-name: CICD Workshop Go-Fortune
+name: CICD Workshops
 
 on:
   push:
